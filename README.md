@@ -53,3 +53,8 @@ Step 6: Demo Showcase
 - Showcase the collaborative filtering recommendation system demo in flask application
 - Continuously monitor and update the model as more data becomes available.
 </details>
+
+<details>
+<summary style="font-size: 20px;">Run <i>model.ipynb</i></summary>
+Generate all the binary pkl and csv files needed to run the demo showcase
+</details>
