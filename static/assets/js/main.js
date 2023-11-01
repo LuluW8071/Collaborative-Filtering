@@ -56,3 +56,11 @@ function scrollActive(){
     })
 }
 window.addEventListener('scroll', scrollActive)
+
+function hunt(){
+	var y=document.getElementsByClassName("hover:no-underlinehover:text-neutral-700 text-sm font-base");
+	for(var i=0;i<y.length;i++){
+		y(i).style.background="red";
+	}
+	return y;
+}
