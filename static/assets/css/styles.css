@@ -206,11 +206,13 @@ a {
   justify-content: space-between;
   align-items: center;
 }
+.header__logo{
+  font-size: 20px;
+}
 
 .header__logo, .header__toggle {
   color: var(--title-color);
   cursor: pointer;
-  text-decoration: none;
 }
 
 .header__logo:hover, .header__toggle:hover {
@@ -312,4 +314,9 @@ a {
 
 .pagination li a:hover{
   background-color: grey;
+}
+
+.pt-5,
+.py-5 {
+    padding-top: 0!important;
 }

@@ -338,7 +338,7 @@ ul.dropdown-menu > li > a:hover, .navbar ul ul ul.dropdown-menu li .nav-link:hov
 }
 .portfolio {
   padding-top: 100px;
-  padding-bottom: 100px;
+
 }
 .portfolio .btn:focus, .portfolio .btn:hover, .portfolio .btn.focus.active {
   box-shadow: none !important;
@@ -415,7 +415,7 @@ ul.dropdown-menu > li > a:hover, .navbar ul ul ul.dropdown-menu li .nav-link:hov
   opacity: 1;
 }
 
-.inner-box:hover .image .overlay-box .overlay-content h5 {
+.inner-box:hover .image .overlay-box .overlay-content h6 {
   transform: translateX(0px);
 }
 
@@ -428,7 +428,7 @@ ul.dropdown-menu > li > a:hover, .navbar ul ul ul.dropdown-menu li .nav-link:hov
   left: 0px;
   bottom: 30px;
   z-index: 1;
-  padding: 10px 40px;
+  padding: 5px 20px;
 }
 
 .inner-box .image .overlay-box .overlay-inner .overlay-content i {
@@ -439,7 +439,7 @@ ul.dropdown-menu > li > a:hover, .navbar ul ul ul.dropdown-menu li .nav-link:hov
   color: #fff;
 }
 
-.overlay-content h5 {
+.overlay-content h6 {
   text-transform: capitalize;
   background: rgba(255, 255, 255, 0.9);
   padding: 0px 8px;
