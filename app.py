@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for
-import pickle, math 
+from flask import Flask, render_template, request, redirect, url_for, jsonify
+import pickle 
 from math import ceil
 
-import pandas as pd
-import numpy as np
+from algoliasearch.search_client import SearchClient
+from api import ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME
 
 popular_df = pickle.load(open('model/popular.pkl', 'rb'))
 pt = pickle.load(open('model/pt.pkl', 'rb'))
@@ -62,7 +62,29 @@ def index():
                                         prev=prev, 
                                         next=next)
         
-    
+# Algolia Search
+client = SearchClient.create(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
+index = client.init_index(ALGOLIA_INDEX_NAME)
+
+#Search function
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    format = request.args.get('format', 'html')
+
+    if not query:
+        if format == 'json':
+            return jsonify({'error': 'query parameter is required'})
+        else:
+            return render_template('search.html', 
+                                   error='query parameter is required')
+
+    results = index.search(query)
+    hits = results['hits']
+
+    if format == 'json':
+        return jsonify(hits)
+    return render_template('search.html', hits=hits)
     
 if __name__ == '__main__':
     app.run(debug=True)
