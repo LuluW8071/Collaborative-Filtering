@@ -292,3 +292,24 @@ a {
     font-size: 1.25rem;
   }
 }
+
+/* CSS for scroll-down animation */
+.scroll-down-animation {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.scroll-down-animation.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-item.active .page-link {
+  background-color: var(--container-color-dark);
+  border-color: var(--container-color-dark);
+}
+
+.pagination li a:hover{
+  background-color: grey;
+}

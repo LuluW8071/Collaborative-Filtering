@@ -57,9 +57,12 @@ def index():
                                         isbn=isbn,
                                         year_of_publication=year_of_publication, 
                                         publisher=publisher,
+                                        num_pages=num_pages,
                                         page=page, 
                                         prev=prev, 
                                         next=next)
         
+    
+    
 if __name__ == '__main__':
     app.run(debug=True)

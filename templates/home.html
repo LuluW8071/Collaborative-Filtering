@@ -23,8 +23,7 @@
 {% block body %}
 
 <body>
-    <section class="portfolio">
-
+    <section class="portfolio scroll-down-animation" >
         <div class="container">
             <h1>HOME</h1>
             <div class="row shuffle-wrapper portfolio-gallery mt-4">
@@ -32,7 +31,7 @@
                 <div class="col-lg-3 col-3 mb-4 shuffle-item" data-groups="[&quot;branding&quot;]">
                     <div class="position-relative inner-box">
                         <div class="image position-relative ">
-                            <img src="{{ image[i] }}" alt="{{ book_name[i] }}" class="img-fluid w-100 d-block">
+                            <img src="{{ image[i] }}" alt="{{ book_name[i] }}" class="img-fluid w-100 d-block book-image">
                             <div class="overlay-box">
                                 <div class="overlay-inner">
                                     <a class="overlay-content" href="portfolio-single.html">
@@ -49,6 +48,28 @@
         </div>
     </section>
     <!-- Portfolio End -->
+
+    <!-- Pagination -->
+    <nav aria-label="Pagination">
+        <ul class="pagination justify-content-center ">
+            <li class="page-item {% if page == 1 %}disabled{% endif %}">
+                <a class="page-link" href="{{prev}}" tabindex="-1"><i class="fa fa-chevron-left"></i></a>
+            </li>
+            
+            {% for i in range(page-1, page+2) if i > 0 and i <= num_pages and i <= 11 %}
+            <li class="page-item {% if page == i %}active{% endif %}">
+                <a class="page-link" href="/?page={{ i }}">{{ i }}</a>
+            </li>
+            {% endfor %}
+            
+            <li class="page-item {% if page == num_pages %}disabled{% endif %}">
+                <a class="page-link" href="{{next}}"><i class="fa fa-chevron-right"></i></a>
+            </li>
+        </ul>
+    </nav>
+    <!--End Pagination -->
+    
+    
 
     <!-- Footer start -->
     <section class="footer">

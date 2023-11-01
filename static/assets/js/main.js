@@ -57,10 +57,28 @@ function scrollActive(){
 }
 window.addEventListener('scroll', scrollActive)
 
-function hunt(){
-	var y=document.getElementsByClassName("hover:no-underlinehover:text-neutral-700 text-sm font-base");
-	for(var i=0;i<y.length;i++){
-		y(i).style.background="red";
-	}
-	return y;
-}
+/*=============== SCROLL DOWN ANIMATION ===============*/
+document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('.scroll-down-animation');
+    let animationTriggered = false;
+
+    function checkScroll() {
+        if (!animationTriggered) {
+            const scrollPosition = window.scrollY;
+            const sectionOffset = section.offsetTop;
+            const windowHeight = window.innerHeight;
+
+            if (scrollPosition > sectionOffset - windowHeight / 2) {
+                section.classList.add('active');
+                animationTriggered = true;
+            }
+        }
+    }
+
+    // Check on scroll
+    window.addEventListener('scroll', checkScroll);
+
+    // Initial check on page load
+    checkScroll();
+});
+
