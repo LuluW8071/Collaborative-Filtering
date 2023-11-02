@@ -58,3 +58,8 @@ Step 6: Demo Showcase
 <summary style="font-size: 20px;">Run <i>model.ipynb</i></summary>
 Generate all the binary pkl and csv files needed to run the demo showcase
 </details>
+
+<footer>
+  Feel free to send issues if you face any problem. </br>
+  ✨ Don't forget to star the repo :)
+</footer>
