@@ -84,7 +84,9 @@ def search():
 
     if format == 'json':
         return jsonify(hits)
-    return render_template('search.html', hits=hits)
+    return render_template('search.html', hits=hits, query=query)
+
+
     
 if __name__ == '__main__':
     app.run(debug=True)

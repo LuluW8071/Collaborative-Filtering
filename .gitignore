@@ -1,9 +1,0 @@
-env/
-model/popular.pkl
-.vscode/
-model/pt.pkl
-model/similarity_scores.pkl
-model/books.pkl
-model/BooksDataset.csv
-__pycache__/
-api.py
