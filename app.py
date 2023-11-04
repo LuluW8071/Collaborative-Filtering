@@ -65,29 +65,6 @@ def index():
                                         page=page, 
                                         prev=prev, 
                                         next=next)
-        
-# Algolia Search
-client = SearchClient.create(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
-index = client.init_index(ALGOLIA_INDEX_NAME)
-
-#Search function
-@app.route('/search')
-def search():
-    query = request.args.get('query')
-    format = request.args.get('format', 'html')
-
-    if not query:
-        if format == 'json':
-            return jsonify({'error': 'query parameter is required'})
-        else:
-            return render_template('search.html', 
-                                   error='query parameter is required')
-    results = index.search(query)
-    hits = results['hits']
-
-    if format == 'json':
-        return jsonify(hits)
-    return render_template('search.html', hits=hits, query=query)
 
 @app.route('/product', methods=['GET'])
 def product():
@@ -139,6 +116,33 @@ def product():
                                             year_of_publication=year_of_publication,
                                             publisher=publisher,
                                             data=data)
+
+# Algolia Search
+client = SearchClient.create(ALGOLIA_APP_ID, ALGOLIA_API_KEY)
+index = client.init_index(ALGOLIA_INDEX_NAME)
+
+#Search function
+@app.route('/search')
+def search():
+    query = request.args.get('query')
+    format = request.args.get('format', 'html')
+
+    if not query:
+        if format == 'json':
+            return jsonify({'error': 'query parameter is required'})
+        else:
+            return render_template('search.html', 
+                                   error='query parameter is required')
+    results = index.search(query)
+    hits = results['hits']
+
+    if format == 'json':
+        return jsonify(hits)
+    return render_template('search.html', hits=hits, query=query)
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
