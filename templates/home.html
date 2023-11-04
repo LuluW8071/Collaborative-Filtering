@@ -30,12 +30,13 @@
                 {% for i in range(book_name|length) %}
                 <div class="col-lg-3 col-3 mb-4 shuffle-item" data-groups="[&quot;branding&quot;]">
                     <div class="position-relative inner-box">
+                    
                         <div class="image position-relative ">
                             <img src="{{ image[i] }}" alt="{{ book_name[i] }}"
                                 class="img-fluid w-100 d-block book-image">
                             <div class="overlay-box">
                                 <div class="overlay-inner">
-                                    <a class="overlay-content" href="#">
+                                    <a class="overlay-content" href="{{ url_for('product') }}?book_name={{ book_name[i] | urlencode }}&author={{ author[i] | urlencode }}&image={{ image[i] | urlencode }}&isbn={{ isbn[i] | urlencode }}&year_of_publication={{ year_of_publication[i] | urlencode }}&publisher={{ publisher[i] | urlencode }}">
                                         <h6 class="mb-0">{{ book_name[i] }}</h6>
                                         <p>{{ author[i]}}</p>
                                     </a>
@@ -43,6 +44,7 @@
                             </div>
                         </div>
                     </div>
+                    
                 </div>
                 {% endfor %}
             </div>
