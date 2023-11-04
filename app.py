@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import pickle 
 from math import ceil
+import re
+
+import pandas as pd
+import numpy as np
 
 from algoliasearch.search_client import SearchClient
 from api import ALGOLIA_APP_ID, ALGOLIA_API_KEY, ALGOLIA_INDEX_NAME
@@ -12,14 +16,14 @@ similarity_scores = pickle.load(open('model/similarity_scores.pkl', 'rb'))
                                 
 app = Flask(__name__)
 
-#Static location config
+# Static location config
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['UPLOAD_FOLDER'] = 'static'
 app.secret_key = 'secret'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['UPLOAD_FOLDER'] = 'static'
 
-#Setting up home page
+# Setting up home page
 @app.route('/')
 def index():
     page = request.args.get('page', 1, type=int)
@@ -78,7 +82,6 @@ def search():
         else:
             return render_template('search.html', 
                                    error='query parameter is required')
-
     results = index.search(query)
     hits = results['hits']
 
@@ -86,7 +89,56 @@ def search():
         return jsonify(hits)
     return render_template('search.html', hits=hits, query=query)
 
+@app.route('/product', methods=['GET'])
+def product():
+    book_name = request.args.get('book_name')
+    author = request.args.get('author')
+    image = request.args.get('image')
+    rating = request.args.get('rating')
+    votes = request.args.get('votes')
+    isbn = request.args.get('isbn')
+    year_of_publication = request.args.get('year_of_publication')
+    publisher = request.args.get('publisher')
 
+    # Get recommendations using Book-Title in index
+    # Part of recommendation code is from model.ipynb
+
+    # index = np.where(pt.index == book_name)[0][0]
+    # Reurns Index error in Flask , above line doesn't work in flask 
     
+    index = next((i for i, title in enumerate(pt.index) if title == book_name), None)
+
+    similar_items = sorted(
+        list(enumerate(similarity_scores[index])), key=lambda x: x[1], reverse=True)[1:5]
+
+    data = []
+    for i in similar_items:
+        item = []
+        temp_df = books_df[books_df['Book-Title'] == pt.index[i[0]]]
+        item.extend(list(temp_df.drop_duplicates(
+            'Book-Title')['Book-Title'].values))
+        item.extend(list(temp_df.drop_duplicates(
+            'Book-Title')['Book-Author'].values))
+        item.extend(list(temp_df.drop_duplicates(
+            'Book-Title')['Image-URL-L'].values))
+        item.extend(list(temp_df.drop_duplicates(
+            'Book-Title')['ISBN'].values))
+        item.extend(list(temp_df.drop_duplicates(
+            'Book-Title')['Year-Of-Publication'].values))
+        item.extend(list(temp_df.drop_duplicates(
+            'Book-Title')['Publisher'].values))
+
+        data.append(item)
+
+    return render_template('product.html', book_name=book_name,
+                                            author=author,
+                                            image=image,
+                                            rating=rating,
+                                            votes=votes,
+                                            isbn=isbn,
+                                            year_of_publication=year_of_publication,
+                                            publisher=publisher,
+                                            data=data)
+
 if __name__ == '__main__':
     app.run(debug=True)
