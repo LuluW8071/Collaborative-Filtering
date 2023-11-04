@@ -338,3 +338,8 @@ a {
 .form-control:focus {
   border-color: grey !important;
 }
+
+/* Product Page details */
+.details b{
+  color:black;
+}
