@@ -343,3 +343,13 @@ a {
 .details b{
   color:black;
 }
+
+/* About Page */
+section strong{
+  color:black;
+}
+
+.justify-text {
+  text-align: justify;
+}
+

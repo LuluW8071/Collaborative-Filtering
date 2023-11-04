@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{ url_for('static', filename='assets/img/favicon-32x32.png') }}" type="image/png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/gallery.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <title>About BookBlend: Your Recommendation Oasis</title>
+    {% extends 'index.html' %}
+</head>
+{% block body %}
+
+<body>
+    <section class="portfolio scroll-down-animation">
+        <div class="container my-1">
+            <header>
+                <h2>BookBlend: Your Recommendation Oasis</h2>
+            </header>
+            <hr>
+            <main>
+                <section>
+                    <h3>Our Mission</h3>
+                    <p class="justify-text">BookBlend was born out of a love for reading and a desire to make your
+                        reading journey more enjoyable. We understand that finding the perfect book can be a daunting
+                        task in today's vast literary landscape. Our mission is to simplify your book discovery process
+                        and help you uncover hidden gems that align with your unique reading preferences.</p>
+                </section>
+                <section class="my-4">
+                    <h3>How It Works</h3>
+                    <h4>Collaborative Filtering</h4>
+                    <p class="justify-text">BookBlend employs collaborative filtering, a powerful recommendation
+                        technique that leverages the wisdom of the crowd. It works by analyzing the behaviors and
+                        preferences of other users to suggest books that you might enjoy based on your historical
+                        interactions with our platform.</p>
+
+                    <h4>Cosine Vector Similarity</h4>
+                    <p class="justify-text">Cosine vector similarity is at the heart of our recommendation engine. We
+                        represent your reading history and book profiles as vectors in a high-dimensional space. By
+                        measuring the cosine of the angle between these vectors, we identify books that are most similar
+                        to your past choices.</p>
+
+                    <h4>Datasets</h4>
+                    <p class="justify-text">Our recommendation system is fueled by three key datasets:</p>
+                    <ul>
+                        <li>
+                            <p class="justify-text"><strong>Books Dataset:</strong> A comprehensive collection of books
+                                spanning various categories, ensuring a diverse range of recommendations.</p>
+                        </li>
+                        <li>
+                            <p class="justify-text"><strong>Ratings Dataset:</strong> Ratings and those of other users
+                                help us understand your preferences and identify books that align with your tastes.</p>
+                        </li>
+                        <li>
+                            <p class="justify-text"><strong>Users Dataset:</strong> Information about users allows us to
+                                create personalized profiles and deliver recommendations that resonate with your unique
+                                reading habits.</p>
+                        </li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </section>
+    {% endblock body %}
+</body>
+<footer>
+    {% block footer %}
+    {% include 'footer.html' %}
+    {% endblock %}
+</footer>
+
+</html>
