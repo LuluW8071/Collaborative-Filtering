@@ -55,11 +55,12 @@ Generate all the binary pkl and csv files needed to run the demo showcase
 
 <details>
 <summary style="font-size: 20px;">Edit <i>api.py</i> [Optional for Search funtion]</summary>
+  
 - Create an account at <a href=https://www.algolia.com/users/sign_in>Algolia</a>
 - Create your index and upload records of filtered 'BooksDataset.csv'
 - Find your API and edit on api.py
 <p align="center">
-  <img src="static/algolia-search.png" alt="Collaborative Filtering" width="50%">
+  <img src="static/algolia-search.png" alt="Collaborative Filtering">
 </p>
 
 ```
@@ -67,7 +68,7 @@ Generate all the binary pkl and csv files needed to run the demo showcase
 
 ALGOLIA_APP_ID = '____________'
 ALGOLIA_API_KEY = '______________________'
-ALGOLIA_INDEX_NAME = 'Book_Recommendation'
+ALGOLIA_INDEX_NAME = '_______________________'
 ```
 
 </details>
