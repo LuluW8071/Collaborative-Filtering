@@ -353,3 +353,28 @@ section strong{
   text-align: justify;
 }
 
+/* Footer */
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 0px;
+  background: var(--container-color-dark);
+}
+
+.footer-widget a {
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: capitalize;
+}
+.footer-widget a:hover {
+  color: #f44336;
+}
+
+/* No search results.png */
+.centered-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  height: 68vh; 
+}
