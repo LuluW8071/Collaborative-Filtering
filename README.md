@@ -76,6 +76,7 @@ ALGOLIA_INDEX_NAME = '_______________________'
 <details>
 <summary style="font-size: 20px;">Run <i>app.py</i></summary>
   To run the app.py, load the dependecies requirements and use the following command:
+  
   ```
   py app.py
   ```
